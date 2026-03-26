@@ -63,6 +63,8 @@ At the end of a shift, a manager must open the Admin Panel and click "RUN EOD (S
         Implemented a "Add Stock" button to the Admin panel for easier stock additions.
 
         Added smoother update protocol with loading bar and quicker and smoother downloads.
+        
+        The "READ ME.txt" File will now update with the .exe file
 
 
     v0.3.2-PRO
