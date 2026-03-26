@@ -1,0 +1,95 @@
+🥩 EAT SUM MEAT - Point of Sale (POS) System
+
+Store: Eat Sum Meat (Pty) Ltd | Current Build: v0.3.3-PRO
+📌 1. System Overview
+
+The Eat Sum Meat POS is a custom-built, offline-first terminal designed for high-speed retail checkout. It features a locked-down Kiosk Mode, automated cloud updating, hardware-level silent receipt printing, and secure End-of-Day (EOD) data syncing.
+
+⚙️ 2. First-Time Setup & Installation
+
+Because this software generates local databases and handles secure system-level updates, it must be installed correctly.
+
+    Create a Dedicated Folder: Do not run the .exe from your Downloads folder. Move EatSumMeatPOS.exe to a permanent location (e.g., C:\POS_System\).
+
+    Run as Administrator: Right-click the .exe and select "Run as Administrator". The software requires this to execute the Auto-Updater and focus the barcode scanner.
+
+    Automatic File Generation: Upon first boot, the system will automatically generate products.json, transactions.json, and sessions.json in the same folder. Do not delete these files.
+
+
+🧑‍💻 3. Operating Instructions
+Logging In
+
+    The system is locked behind a secure login screen.
+
+    Default Cashier Codes: CSH1, CSH2, ADMIN
+
+    Upon successful login, the barcode scanner is automatically engaged.
+
+Ringing Up Customers
+
+    Scan: Use a physical barcode scanner, or type the code and press ENT on the digital numpad.
+
+    Quick Cash: Use the exact amount buttons (e.g., +R50, +R100) to quickly calculate change.
+
+    Payment: Click PAY CASH or PAY EFT. The system will silently spool the receipt to the default Windows printer and clear the till for the next customer.
+
+    Voiding: Select an item in the cart and click VOID. This requires an Admin override.
+
+The Admin Panel
+
+    Click ADMIN PANEL at the bottom right.
+
+    Default Manager PIN: 1981
+
+    From here, you can view live inventory, today's local sales, and cashier login durations.
+
+
+☁️ 4. Cloud & Network Features
+
+Over-The-Air (OTA) Updates
+The POS will check for new versions on every boot. If a new version is detected on the company GitHub repository, the app will prompt the cashier, download the update, swap the .exe files, and reboot itself automatically.
+
+End of Day (EOD) Sync
+At the end of a shift, a manager must open the Admin Panel and click "RUN EOD (SYNC PREP)". This will securely package all local sales, sessions, and inventory data, stamp it with the Till ID and Date, and push it to the Back Office sync folder.
+
+🔄 5. Version History
+
+ v0.3.3-PRO
+
+        Hold pos purchase system added.
+
+        Upgraded buttons UI and Size.
+
+        Implemented a "Add Stock" button to the Admin panel for easier stock additions.
+
+        Added smoother update protocol with loading bar and quicker and smoother downloads.
+
+
+    v0.3.2-PRO
+
+        Implemented End-of-Day (EOD) Sync protocol for Back Office data staging.
+
+        Upgraded receipt generation to include VAT (15%) and professional formatting.
+
+        Integrated Windows Print Spooler API for silent, popup-free thermal printing.
+
+        Auto GitHub update system.
+
+    v0.2.0-PRO
+
+        Migrated to Dynamic Directory mapping (JSON files now reliably save next to the executable).
+
+        Upgraded UI with Braai Red and Neon Green contrast themes.
+
+        Added session logging (Login/Logout hours tracking).
+
+    v0.1.0-BETA
+
+        Initial framework, digital numpad, and cart calculation logic.
+
+
+⚖️ 6. Legal & Disclaimer
+
+Software Liability: This software is provided "as-is" without any express or implied warranty. In no event will the developers be held liable for any damages arising from the use of this software, including but not limited to data loss, financial discrepancies, or hardware failure.
+Data Responsibility: The store operator is solely responsible for backing up transactions.json and products.json.
+Financial Compliance: The built-in VAT calculations (15%) are for display and receipt purposes. This software does not automatically file taxes; all financial exports (Z-Reports) should be reviewed by a certified accountant.
