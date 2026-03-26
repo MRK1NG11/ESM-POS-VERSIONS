@@ -1,6 +1,6 @@
 🥩 EAT SUM MEAT - Point of Sale (POS) System
 
-Store: Eat Sum Meat (Pty) Ltd | Current Build: v0.3.3-PRO
+Store: Eat Sum Meat (Pty) Ltd | Current Build: v0.3.4
 📌 1. System Overview
 
 The Eat Sum Meat POS is a custom-built, offline-first terminal designed for high-speed retail checkout. It features a locked-down Kiosk Mode, automated cloud updating, hardware-level silent receipt printing, and secure End-of-Day (EOD) data syncing.
@@ -54,7 +54,19 @@ At the end of a shift, a manager must open the Admin Panel and click "RUN EOD (S
 
 🔄 5. Version History
 
- v0.3.3-PRO
+
+ v0.3.4
+
+        Added better Update UI system with removed false error.
+
+        UI improvement with the manual select items box more uniform.
+
+        Change "Orders" to "Sales".
+
+        "READ ME.txt" updates to file of ".exe".
+
+
+ v0.3.3-
 
         Hold pos purchase system added.
 
