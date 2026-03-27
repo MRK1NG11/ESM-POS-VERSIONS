@@ -1,7 +1,7 @@
 ==================================================
 🥩 EAT SUM MEAT POS SYSTEM 🥩
 ==================================================
-VERSION: 0.3.5
+VERSION: 0.4.0
 STORE: 11 Caxton Street, East London City Centre
 
 Welcome to the Eat Sum Meat Point of Sale system. This software is designed for fast, touchscreen-friendly order processing, live inventory management, and secure end-of-day reporting.
@@ -18,14 +18,14 @@ To access the till, use one of the following Cashier Codes:
 (Required for Voiding items, adding stock, and accessing the Admin Panel).
 
 --------------------------------------------------
-✨ NEW IN THIS VERSION (0.3.5)
+✨ NEW IN THIS VERSION (0.4.0)
 --------------------------------------------------
-• Touch-Optimized UI: Larger product buttons, bigger fonts, and uniform cash-entry buttons for faster tapping.
-• Z-Reports: Managers can now print physical End of Day Z-Reports detailing total Cash, EFT, and VAT.
-• Professional Receipts: Upgraded Tax Invoice layout with clear VAT summaries and dashed formatting.
-• Advanced Admin Sales Tracker: The Admin panel now features an expandable sales list. Click the arrow next to a transaction to see exactly what items were sold in that order.
-• Over-The-Air (OTA) Updates: The system now checks for updates automatically and will prompt the cashier to install new versions without needing manual USB transfers.
-
+• Auto-Lock & Smart Hold: If the till is left idle for 3 minutes, it will automatically lock to secure the cash drawer. If a cart was mid-ring, the system will automatically "Hold" it before locking so the order isn't lost.
+• Modern Admin Dashboard: The Admin Panel has been completely overhauled into a sleek, single-page interface with a sidebar navigation menu and live revenue metric cards.
+• CSV Sales Export: Bookkeeping is now easier than ever. Managers can click "EXPORT CSV" in the Admin Panel to instantly generate an Excel-ready spreadsheet of the day's sales.
+• Instant Reprint: Added a "REPRINT" button next to VOID and CLEAR. If a receipt paper jams or a customer changes their mind and wants a slip, you can instantly reprint the last transaction.
+• Streamlined UI: Removed unnecessary text from the payment buttons and cleaned up the category filters to keep the POS looking sharp and running fast.
+• Admin Panel Overhaul: The new large and easier to visualise UI has improved the admin panel.
 --------------------------------------------------
 🛠️ QUICK USER GUIDE
 --------------------------------------------------
@@ -52,6 +52,7 @@ If a pop-up appears saying "UPDATE AVAILABLE", it means head office has pushed a
 • The system will download the new files, show a loading bar, and automatically restart itself in a few seconds. Do not force close the app while it is updating.
 
 ==================================================
-SYSTEM DEVELOPER: MRK1NG11
+SYSTEM DEVELOPER: Michael Toich
 For technical support, please contact the system administrator.
+michaeltoich11@gmail.com
 ==================================================
