@@ -1,109 +1,57 @@
-🥩 EAT SUM MEAT - Point of Sale (POS) System
+==================================================
+🥩 EAT SUM MEAT POS SYSTEM 🥩
+==================================================
+VERSION: 0.3.5
+STORE: 11 Caxton Street, East London City Centre
 
-Store: Eat Sum Meat (Pty) Ltd | Current Build: v0.3.4
-📌 1. System Overview
+Welcome to the Eat Sum Meat Point of Sale system. This software is designed for fast, touchscreen-friendly order processing, live inventory management, and secure end-of-day reporting.
 
-The Eat Sum Meat POS is a custom-built, offline-first terminal designed for high-speed retail checkout. It features a locked-down Kiosk Mode, automated cloud updating, hardware-level silent receipt printing, and secure End-of-Day (EOD) data syncing.
+--------------------------------------------------
+👤 LOGIN CREDENTIALS
+--------------------------------------------------
+To access the till, use one of the following Cashier Codes:
+• CSH1
+• CSH2
+• ADMIN
 
-⚙️ 2. First-Time Setup & Installation
+🔒 MANAGER OVERRIDE PIN: 1981
+(Required for Voiding items, adding stock, and accessing the Admin Panel).
 
-Because this software generates local databases and handles secure system-level updates, it must be installed correctly.
+--------------------------------------------------
+✨ NEW IN THIS VERSION (0.3.5)
+--------------------------------------------------
+• Touch-Optimized UI: Larger product buttons, bigger fonts, and uniform cash-entry buttons for faster tapping.
+• Z-Reports: Managers can now print physical End of Day Z-Reports detailing total Cash, EFT, and VAT.
+• Professional Receipts: Upgraded Tax Invoice layout with clear VAT summaries and dashed formatting.
+• Advanced Admin Sales Tracker: The Admin panel now features an expandable sales list. Click the arrow next to a transaction to see exactly what items were sold in that order.
+• Over-The-Air (OTA) Updates: The system now checks for updates automatically and will prompt the cashier to install new versions without needing manual USB transfers.
 
-    Create a Dedicated Folder: Do not run the .exe from your Downloads folder. Move EatSumMeatPOS.exe to a permanent location (e.g., C:\POS_System\).
+--------------------------------------------------
+🛠️ QUICK USER GUIDE
+--------------------------------------------------
+1. RINGING UP SALES: 
+   Tap the category buttons (MEAT, VEG, DRINK) to filter products. Tap a product to add it to the cart. 
 
-    Run as Administrator: Right-click the .exe and select "Run as Administrator". The software requires this to execute the Auto-Updater and focus the barcode scanner.
+2. VOIDING ITEMS: 
+   Select the item in the cart list and press "VOID". A manager PIN is required.
 
-    Automatic File Generation: Upon first boot, the system will automatically generate products.json, transactions.json, and sessions.json in the same folder. Do not delete these files.
+3. HOLDING ORDERS: 
+   If a customer forgets their wallet, press "HOLD" to save their cart and clear the screen for the next customer. Press "RECALL" to bring it back.
 
+4. EXACT CASH / CHANGE: 
+   Use the +R10, +R50, etc., buttons to input the cash the customer hands you. The system will calculate the exact change due in green.
 
-🧑‍💻 3. Operating Instructions
-Logging In
+5. END OF DAY (Z-REPORT): 
+   At closing, click "ADMIN PANEL", enter the manager PIN, and click "PRINT Z-REPORT". This will print the daily totals and package the data for the back-office.
 
-    The system is locked behind a secure login screen.
+--------------------------------------------------
+🔄 AUTO-UPDATER NOTICE
+--------------------------------------------------
+If a pop-up appears saying "UPDATE AVAILABLE", it means head office has pushed a new version. 
+• Click "UPDATE NOW" when the shop is quiet.
+• The system will download the new files, show a loading bar, and automatically restart itself in a few seconds. Do not force close the app while it is updating.
 
-    Default Cashier Codes: CSH1, CSH2, ADMIN
-
-    Upon successful login, the barcode scanner is automatically engaged.
-
-Ringing Up Customers
-
-    Scan: Use a physical barcode scanner, or type the code and press ENT on the digital numpad.
-
-    Quick Cash: Use the exact amount buttons (e.g., +R50, +R100) to quickly calculate change.
-
-    Payment: Click PAY CASH or PAY EFT. The system will silently spool the receipt to the default Windows printer and clear the till for the next customer.
-
-    Voiding: Select an item in the cart and click VOID. This requires an Admin override.
-
-The Admin Panel
-
-    Click ADMIN PANEL at the bottom right.
-
-    Default Manager PIN: 1981
-
-    From here, you can view live inventory, today's local sales, and cashier login durations.
-
-
-☁️ 4. Cloud & Network Features
-
-Over-The-Air (OTA) Updates
-The POS will check for new versions on every boot. If a new version is detected on the company GitHub repository, the app will prompt the cashier, download the update, swap the .exe files, and reboot itself automatically.
-
-End of Day (EOD) Sync
-At the end of a shift, a manager must open the Admin Panel and click "RUN EOD (SYNC PREP)". This will securely package all local sales, sessions, and inventory data, stamp it with the Till ID and Date, and push it to the Back Office sync folder.
-
-🔄 5. Version History
-
-
- v0.3.4
-
-        Added better Update UI system with removed false error.
-
-        UI improvement with the manual select items box more uniform.
-
-        Change "Orders" to "Sales".
-
-        "READ ME.txt" updates to file of ".exe".
-
-
- v0.3.3-
-
-        Hold pos purchase system added.
-
-        Upgraded buttons UI and Size.
-
-        Implemented a "Add Stock" button to the Admin panel for easier stock additions.
-
-        Added smoother update protocol with loading bar and quicker and smoother downloads.
-        
-        The "READ ME.txt" File will now update with the .exe file
-
-
-    v0.3.2-PRO
-
-        Implemented End-of-Day (EOD) Sync protocol for Back Office data staging.
-
-        Upgraded receipt generation to include VAT (15%) and professional formatting.
-
-        Integrated Windows Print Spooler API for silent, popup-free thermal printing.
-
-        Auto GitHub update system.
-
-    v0.2.0-PRO
-
-        Migrated to Dynamic Directory mapping (JSON files now reliably save next to the executable).
-
-        Upgraded UI with Braai Red and Neon Green contrast themes.
-
-        Added session logging (Login/Logout hours tracking).
-
-    v0.1.0-BETA
-
-        Initial framework, digital numpad, and cart calculation logic.
-
-
-⚖️ 6. Legal & Disclaimer
-
-Software Liability: This software is provided "as-is" without any express or implied warranty. In no event will the developers be held liable for any damages arising from the use of this software, including but not limited to data loss, financial discrepancies, or hardware failure.
-Data Responsibility: The store operator is solely responsible for backing up transactions.json and products.json.
-Financial Compliance: The built-in VAT calculations (15%) are for display and receipt purposes. This software does not automatically file taxes; all financial exports (Z-Reports) should be reviewed by a certified accountant.
+==================================================
+SYSTEM DEVELOPER: MRK1NG11
+For technical support, please contact the system administrator.
+==================================================
