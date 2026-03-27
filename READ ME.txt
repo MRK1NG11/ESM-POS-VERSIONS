@@ -1,58 +1,132 @@
-==================================================
-🥩 EAT SUM MEAT POS SYSTEM 🥩
-==================================================
-VERSION: 0.4.0
-STORE: 11 Caxton Street, East London City Centre
+=============================================================================
+                     EAT SUM MEAT POS - SYSTEM READ ME
+=============================================================================
+CURRENT VERSION: 0.5.0
+LAST UPDATED: 27 March 2026
+DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
 
-Welcome to the Eat Sum Meat Point of Sale system. This software is designed for fast, touchscreen-friendly order processing, live inventory management, and secure end-of-day reporting.
+INTRODUCTION
+------------
+Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a 
+custom-built, high-speed, touchscreen-optimized cash register application. 
+It is designed to process sales quickly, manage live inventory, track staff 
+shifts, and provide secure managerial oversight without relying on a constant 
+internet connection for core functions.
 
---------------------------------------------------
-👤 LOGIN CREDENTIALS
---------------------------------------------------
-To access the till, use one of the following Cashier Codes:
-• CSH1
-• CSH2
-• ADMIN
 
-🔒 MANAGER OVERRIDE PIN: 1981
-(Required for Voiding items, adding stock, and accessing the Admin Panel).
+=============================================================================
+1. HOW TO RUN THE SYSTEM
+=============================================================================
+For Windows Terminals (Executable):
+1. Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
+2. Double-click to launch. The system will automatically check for updates 
+   and boot into the login screen.
 
---------------------------------------------------
-✨ NEW IN THIS VERSION (0.4.0)
---------------------------------------------------
-• Auto-Lock & Smart Hold: If the till is left idle for 3 minutes, it will automatically lock to secure the cash drawer. If a cart was mid-ring, the system will automatically "Hold" it before locking so the order isn't lost.
-• Modern Admin Dashboard: The Admin Panel has been completely overhauled into a sleek, single-page interface with a sidebar navigation menu and live revenue metric cards.
-• CSV Sales Export: Bookkeeping is now easier than ever. Managers can click "EXPORT CSV" in the Admin Panel to instantly generate an Excel-ready spreadsheet of the day's sales.
-• Instant Reprint: Added a "REPRINT" button next to VOID and CLEAR. If a receipt paper jams or a customer changes their mind and wants a slip, you can instantly reprint the last transaction.
-• Streamlined UI: Removed unnecessary text from the payment buttons and cleaned up the category filters to keep the POS looking sharp and running fast.
-• Admin Panel Overhaul: The new large and easier to visualise UI has improved the admin panel.
---------------------------------------------------
-🛠️ QUICK USER GUIDE
---------------------------------------------------
-1. RINGING UP SALES: 
-   Tap the category buttons (MEAT, VEG, DRINK) to filter products. Tap a product to add it to the cart. 
+For Source Code (Python Developers):
+1. Ensure Python 3.8+ is installed.
+2. Install the required module by running: pip install requests
+3. Run the script: python EatSumMeatPOS.py
 
-2. VOIDING ITEMS: 
-   Select the item in the cart list and press "VOID". A manager PIN is required.
+DEFAULT LOGIN CREDENTIALS:
+- Cashiers: CSH1, CSH2
+- Manager/Admin: ADMIN
+- Admin Override PIN: 1981 (Required for Voids, Markdowns, and Admin Panel)
 
-3. HOLDING ORDERS: 
-   If a customer forgets their wallet, press "HOLD" to save their cart and clear the screen for the next customer. Press "RECALL" to bring it back.
 
-4. EXACT CASH / CHANGE: 
-   Use the +R10, +R50, etc., buttons to input the cash the customer hands you. The system will calculate the exact change due in green.
+=============================================================================
+2. INSTRUCTIONS FOR CORE FEATURES
+=============================================================================
+* PROCESSING A SALE:
+  - Scan an item's barcode, or use the "🔍 MANUAL SELECT" button to browse 
+    the visual catalog.
+  - To increase quantity, simply scan/tap the item multiple times.
 
-5. END OF DAY (Z-REPORT): 
-   At closing, click "ADMIN PANEL", enter the manager PIN, and click "PRINT Z-REPORT". This will print the daily totals and package the data for the back-office.
+* MANUAL SELECT (MS):
+  - Tap the "🔍 MANUAL SELECT" button below the barcode box.
+  - A categorized grid will appear. You can filter by category (MEAT, SNACKS, 
+    etc.) or use the search bars to type a name or barcode.
 
---------------------------------------------------
-🔄 AUTO-UPDATER NOTICE
---------------------------------------------------
-If a pop-up appears saying "UPDATE AVAILABLE", it means head office has pushed a new version. 
-• Click "UPDATE NOW" when the shop is quiet.
-• The system will download the new files, show a loading bar, and automatically restart itself in a few seconds. Do not force close the app while it is updating.
+* PAYING OUT (CASH / CARD):
+  - Use the quick-cash buttons (+R10, +R50, etc.) to tally the cash handed 
+    by the customer.
+  - Tap "PAY CASH" to finalize the transaction and calculate exact change.
+  - If the customer is using a card machine, tap "CARD SALES".
 
-==================================================
-SYSTEM DEVELOPER: Michael Toich
-For technical support, please contact the system administrator.
-michaeltoich11@gmail.com
-==================================================
+* 2ND FUNCTIONS:
+  - Tap "⚙️ 2ND FUNCTIONS" at the bottom left.
+  - "⬇️ MARKDOWN PRICE": Allows a manager to temporarily change the price of 
+    a selected item in the cart (requires Admin PIN).
+  - "⌨️ OPEN NUMPAD": Opens a virtual number pad to manually type in 
+    barcodes or amounts if the physical keyboard/scanner fails.
+
+* ADMIN PANEL:
+  - Accessible from the bottom right (Requires Admin PIN).
+  - DASHBOARD: View today's gross revenue, cash vs. card splits, and a live 
+    feed of today's receipts.
+  - INVENTORY: View live stock. Select an item and click "+ ADD STOCK" to 
+    receive new inventory.
+  - STAFF LOGS: Track cashier login/logout times and total hours worked.
+  - PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and 
+    packages the data for back-office synchronization.
+
+
+=============================================================================
+3. VERSION NOTES (The 0.5.0 "New UI and Overhaul" Update)
+=============================================================================
+This update consolidates massive architectural and UI improvements designed 
+specifically for 1024x768 touchscreen monitors. 
+
+MAJOR CHANGES IN THIS RELEASE:
+- Enterprise Dual-Pane Layout: The permanent product grid has been removed. 
+  The Cart now takes up 60% of the screen, providing massive space for 
+  item visibility and larger fonts.
+- Manual Select Modal: Products are now selected via a pop-up 900x650 
+  "MANUAL SELECT" modal, keeping the main screen completely uncluttered.
+- Relocated Numpad: The permanent number pad was moved to the "2ND FUNCTIONS" 
+  menu as a pop-up, freeing up critical vertical space for action buttons.
+- Touchscreen Optimization: All right-side buttons (Void, Hold, Clear, Cash 
+  Grid) have been widened and enlarged to prevent "fat-finger" errors.
+- Balanced Payments: The "PAY CASH" and "CARD SALES" buttons are now perfectly 
+  symmetrical and massive, anchored safely to the bottom right.
+- Terminology Update: "EFT" has been universally updated to "CARD SALES" across 
+  the UI, database, and printed Z-Reports to match retail standards.
+- Cart Readability: The cart now features alternating dark gray row colors to 
+  prevent cashiers from misreading long lists of items.
+- Markdown Feature: Added the ability for managers to override prices directly 
+  from the 2nd Functions menu.
+
+
+=============================================================================
+4. THE AUTO-UPDATE SYSTEM
+=============================================================================
+This POS system features a built-in, zero-touch Auto-Updater linked to GitHub.
+
+How it works:
+1. Upon booting, the POS checks the cloud for a new version number.
+2. If a newer version exists, a prompt appears asking to "UPDATE NOW" or "LATER".
+3. Clicking "UPDATE NOW" downloads the latest EatSumMeatPOS.exe from the server.
+4. The system utilizes a temporary batch script (.bat) to safely delete the old 
+   executable, replace it with the new one, and instantly restart the POS.
+
+There is no need for manual USB updates or IT intervention. As long as the till 
+has an internet connection on boot, it will remain up to date.
+
+
+=============================================================================
+5. LEGAL INFORMATION
+=============================================================================
+Copyright (c) 2026 Eat Sum Meat (Pty) Ltd. All Rights Reserved.
+
+This software is the proprietary property of Eat Sum Meat (Pty) Ltd. 
+Unauthorized copying, modification, distribution, or reverse engineering 
+of this software, via any medium, is strictly prohibited. 
+
+
+=============================================================================
+6. SUPPORT & CONTACT
+=============================================================================
+For critical system failures, hardware issues, or feature requests, please 
+contact the IT Department:
+
+Lead Developer: Michaeltoich11@gaiil.com (072-626-6202)
+GitHub Repo: https://github.com/MRK1NG11/ESM-POS-VERSIONS
