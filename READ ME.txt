@@ -1,7 +1,7 @@
 =============================================================================
                      EAT SUM MEAT POS - SYSTEM READ ME
 =============================================================================
-CURRENT VERSION: 0.5.0
+CURRENT VERSION: 0.5.1
 LAST UPDATED: 27 March 2026
 DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
 
@@ -69,31 +69,31 @@ DEFAULT LOGIN CREDENTIALS:
   - PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and 
     packages the data for back-office synchronization.
 
-
 =============================================================================
-3. VERSION NOTES (The 0.5.0 "New UI and Overhaul" Update)
+3. VERSION NOTES (The 0.5.1 "Professional Polish" Update)
 =============================================================================
-This update consolidates massive architectural and UI improvements designed 
-specifically for 1024x768 touchscreen monitors. 
+This update brings massive quality-of-life improvements, professional-grade 
+reporting, and strict legal compliance to the receipt generator.
 
-MAJOR CHANGES IN THIS RELEASE:
-- Enterprise Dual-Pane Layout: The permanent product grid has been removed. 
-  The Cart now takes up 60% of the screen, providing massive space for 
-  item visibility and larger fonts.
-- Manual Select Modal: Products are now selected via a pop-up 900x650 
-  "MANUAL SELECT" modal, keeping the main screen completely uncluttered.
-- Relocated Numpad: The permanent number pad was moved to the "2ND FUNCTIONS" 
-  menu as a pop-up, freeing up critical vertical space for action buttons.
-- Touchscreen Optimization: All right-side buttons (Void, Hold, Clear, Cash 
-  Grid) have been widened and enlarged to prevent "fat-finger" errors.
-- Balanced Payments: The "PAY CASH" and "CARD SALES" buttons are now perfectly 
-  symmetrical and massive, anchored safely to the bottom right.
-- Terminology Update: "EFT" has been universally updated to "CARD SALES" across 
-  the UI, database, and printed Z-Reports to match retail standards.
-- Cart Readability: The cart now features alternating dark gray row colors to 
-  prevent cashiers from misreading long lists of items.
-- Markdown Feature: Added the ability for managers to override prices directly 
-  from the 2nd Functions menu.
+MAJOR CHANGES IN THIS RELEASE (v0.5.1):
+- Professional Daily Reports: The "EXPORT CSV" button in the Admin Panel 
+  now generates a highly formatted, professional spreadsheet. It includes a 
+  daily summary, itemized transaction logs, and detailed cashier shift logs.
+- Admin Fast-Pass: If you are already logged into the till as "ADMIN", 
+  clicking the Admin Panel button instantly bypasses the PIN screen.
+- Receipt Spillover Fix: Receipt mathematics have been hard-locked. Long 
+  product names truncate cleanly to ensure prices and quantities align 
+  perfectly without wrapping or spilling off the 32-character paper roll.
+- Explicit Receipt Payment Types: Slips now boldly declare "PAID VIA: 
+  CASH SALE" or "PAID VIA: CARD SALE".
+- Legal Protection: Added a legal disclaimer to the bottom of all receipts 
+  (return policy, E&OE, store policy) to protect the business from liability.
+- Scrollbar Annihilated: The default Windows scrollbar on the Cart has 
+  been removed for a much cleaner, flat UI. Cashiers can scroll via touch 
+  drag or mouse wheel.
+- Unified UI Anchoring: The Virtual Numpad now spawns in the bottom-left 
+  corner, perfectly matching the 2nd Functions menu for consistent muscle 
+  memory.
 
 
 =============================================================================
