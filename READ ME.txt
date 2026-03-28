@@ -1,166 +1,126 @@
 =============================================================================
-EAT SUM MEAT POS - SYSTEM READ ME
+🥩 EAT SUM MEAT POS: CLOUD-SYNC EDITION 🥩
 =============================================================================
-CURRENT VERSION: 0.6.0
+CURRENT VERSION: 0.6.2-NETWORK-READY
 LAST UPDATED: 28 March 2026
 DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
+SYNC ARCHITECTURE: Google Drive Cloud Integration
 INTRODUCTION
 
-Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a
-custom-built, high-speed, touchscreen-optimized retail management suite.
-Upgraded to the enterprise-grade DARK-PRO architecture, it is designed to
-process high-volume sales quickly, prevent unauthorized access via Kiosk mode,
-and provide secure, comprehensive managerial oversight without relying on a
-constant internet connection.
+Welcome to the most advanced version of the Eat Sum Meat Point of Sale system.
+Version 1.2.0 introduces "Cloud-Sync" architecture, allowing multiple tills
+to operate simultaneously while feeding real-time data to a centralized
+Backoffice HQ via Google Drive. It retains the signature DARK-PRO high-contrast
+UI while adding enterprise-level data stability and multi-terminal support.
 
 =============================================================================
-HOW TO RUN THE SYSTEM
+ CLOUD INFRASTRUCTURE SETUP (CRITICAL)
 =============================================================================
-    For Windows Terminals (Executable):
+    To enable multi-till syncing, the system uses Google Drive as a "Live Bridge."
 
-    Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
+STEP-BY-STEP INSTALLATION:
 
-    Double-click to launch. The system will automatically check for updates
-    and boot directly into Fullscreen Kiosk Mode.
+    INSTALL GOOGLE DRIVE: Install the "Google Drive for Desktop" app on the
+    Backoffice PC and all Till PCs.
 
-For Source Code (Python Developers):
+    CREATE DATA HUB: On the Backoffice PC, create a folder named
+    "ESM_CLOUD_DATA" inside your Google Drive.
 
-    Ensure Python 3.8+ is installed.
+    CONFIGURE TILLS: On each terminal, open "local_config.json" and set:
 
-    Install the required module by running: pip install requests
+        TILL_NUMBER: "01" (Set unique IDs for each terminal).
 
-    Run the script: python EatSumMeatPOS.py
-
-DEFAULT LOGIN CREDENTIALS:
-
-    Cashiers: CSH1, CSH2
-
-    Manager/Admin: ADMIN
-
-    Admin Override PIN: 1981 (Required for Markdowns, Pay Outs, and Admin Suite)
+        NETWORK_DATA_FOLDER: "G:/My Drive/ESM_CLOUD_DATA"
+        (Ensure the drive letter matches your Google Drive setup).
 
 =============================================================================
-2. INSTRUCTIONS FOR CORE FEATURES
+2. ACCESS CREDENTIALS
+=============================================================================
+    CASHIERS: CSH1, CSH2 (Managed via central staff.json)
+
+    MANAGER/ADMIN: ADMIN
+
+    SECURITY PIN: 1981 (Required for Markdowns, Pay Outs, and Admin Access)
+
+Note: Pinned credentials are now managed globally. Changing a PIN in the
+Backoffice updates all connected Tills instantly.
+=============================================================================
+3. CORE TILL OPERATIONS
 =============================================================================
     PROCESSING A SALE:
+    Scan a barcode. The "Smart Verify Strip" instantly displays Name, Stock,
+    and Price. The input field auto-clears for maximum scanning speed.
 
-        Scan an item's barcode. The system will instantly clear the box for the
-        next scan and display the item's name, stock, and price on the new
-        "Verify Strip" below the scanner.
+    CLOUD MANUAL SELECT (MS):
+    Browse the visual catalog. Categories (MEAT, SNACKS, etc.) and prices are
+    pulled live from the cloud. If you change a price in the office, it
+    reflects here immediately.
 
-        To increase quantity, simply scan the item multiple times.
+    SMART TENDER SYSTEM:
 
-    MANUAL SELECT (MS):
+        8 QUICK-CASH BUTTONS: Rapidly input cash from R200 down to R1.
 
-        Tap the "MANUAL SELECT" button on the left grid.
+        LCD FEEDBACK: Screen glows RED (Cash Due) or NEON GREEN (Change Due).
 
-        A categorized grid will appear. You can filter by category (MEAT, SNACKS,
-        etc.) or use the search bars to type a name or barcode.
-
-    PAYING OUT (CASH / CARD):
-
-        Use the 8 quick-cash buttons (+R200 down to +R1) beneath the numpad to
-        rapidly tally the exact cash handed over by the customer.
-
-        The Total screen will glow RED if cash is DUE, and NEON GREEN for CHANGE.
-
-        Tap "PAY CASH" to finalize the transaction and open the till.
-
-        If the customer is using a card machine, tap "PAY CARD".
-
-    MARKDOWNS & 2ND FUNCTIONS:
-
-        Select an item in the cart and tap "MARK DOWN" to apply a custom price
-        or percentage discount (Requires Admin PIN).
-
-        Tap "2ND FUNC" to access Till Pay Outs. This allows managers to securely
-        log cash removed from the till for store expenses (Requires Admin PIN).
-
-    ADMIN SUITE (Requires Admin PIN):
-
-        Accessible from the bottom left "⚙️ ADMIN VIP" button.
-
-        DASHBOARD: View gross revenue splits and an expandable transaction ledger
-        (click the arrow next to an order to see exactly what was bought).
-
-        INVENTORY: View a live, scrollable data grid of all stock levels.
-
-        STAFF LOGS: Track exact cashier login and logout times.
-
-        PAY OUTS: View a secure audit trail of all cash removed from the till.
-
-        HTML EXPORT: Generates a beautiful, professional daily executive report
-        that opens instantly in your web browser.
-
-        PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and
-        packages the data for back-office synchronization.
+    TILL PAY OUTS (2ND FUNC):
+    Securely remove cash for store expenses. Every cent is logged in the
+    Cloud Pay-Outs Ledger with the associated User, Time, and Reason.
 
 =============================================================================
-3. VERSION NOTES (The 0.6.0 "DARK" Update)
+4. ADMIN & ANALYTICS
+=============================================================================
+Accessible via the "⚙️ ADMIN VIP" button:
 
-This update transforms the POS into a true enterprise retail terminal, locking
-down security while massively upgrading the visual interface.
+    DASHBOARD: Real-time sales for THIS specific terminal.
 
-MAJOR CHANGES IN THIS RELEASE (v0.6.0):
+    ACCORDION LEDGER: Click a transaction to expand and see the itemized list
+    of what was sold.
 
-    Absolute Fullscreen (Kiosk Mode): The Windows top bar has been eliminated.
-    The system now traps the user inside the POS to prevent desktop access.
-    (Must exit via the Admin Suite).
+    HTML EXECUTIVE REPORT: Generates a sleek, color-coded performance report
+    viewable in any web browser.
 
-    Premium Dark Mode UI: The entire system has been moved to a high-contrast
-    charcoal and red theme to reduce eye strain during long cashier shifts.
-
-    Hierarchical Data Grids: The Admin Dashboard no longer crams data. Click the
-    dropdown arrow next to any transaction to smoothly expand and view the
-    itemized receipt.
-
-    Granular Cash Grid: The quick-cash section has been upgraded to a 2x4 grid,
-    allowing exact tender entries from R200 down to R1.
-
-    Smart Verify Strip: A sleek landscape strip below the scanner instantly shows
-    cashiers what they just scanned without breaking eye contact with the flow.
-
-    Massive Number Support: The Change/Due display area has been expanded
-    to handle massive wholesale transaction amounts without text clipping.
-
-    Unified Admin Suite: Transformed the basic admin panel into a 4-tab suite
-    featuring alternating zebra-striped rows, modern spacing, and native mouse
-    scrolling (all ugly grey scrollbars have been annihilated).
-
-    Professional HTML Reports: Replaced the old CSV export with a beautifully
-    styled, color-coded HTML executive report.
+    Z-REPORT: Runs the End-of-Day sequence and packages data for the Backoffice
+    to sweep into the master records.
 
 =============================================================================
-4. THE AUTO-UPDATE SYSTEM
-
-This POS system features a built-in, zero-touch Auto-Updater linked to GitHub.
-
-How it works:
-
-    Upon booting, the POS checks the cloud for a new version number.
-
-    If a newer version exists, a prompt appears asking to "UPDATE NOW" or "LATER".
-
-    Clicking "UPDATE NOW" downloads the latest EatSumMeatPOS.exe from the server.
-
-    The system utilizes a temporary batch script (.bat) to safely delete the old
-    executable, replace it with the new one, and instantly restart the POS.
-
-There is no need for manual USB updates or IT intervention. As long as the till
-has an internet connection on boot, it will remain up to date.
+5. VERSION 0.6.2: THE "NETWORK" UPDATE
 =============================================================================
-5. LEGAL INFORMATION
+This release marks the transition from a standalone register to a
+fully-linked store network.
 
-Copyright (c) 2026 Eat Sum Meat (Pty) Ltd. All Rights Reserved.
+MAJOR UPGRADES:
 
-This software is the proprietary property of Eat Sum Meat (Pty) Ltd.
-Unauthorized copying, modification, distribution, or reverse engineering
-of this software, via any medium, is strictly prohibited.
+    Google Drive Data Bridge: Replaces unreliable local networking with stable,
+    retry-protected cloud syncing.
+
+    File Collision Prevention: Each till saves its own unique file
+    (e.g., transactions_01.json), preventing data corruption during
+    simultaneous sales.
+
+    Global Staffing: Staff IDs and Admin PINs are now pulled from a central
+    file. No more updating every PC manually when you hire a new cashier.
+
+    Retry Logic: The code now "waits" for Google Drive to finish syncing before
+    reading/writing, ensuring 100% data integrity.
+
+    Fullscreen Kiosk Mode: Total security. Users cannot access the Windows
+    desktop without an Admin exiting the app via the secure menu.
+
 =============================================================================
-6. SUPPORT & CONTACT
+6. AUTO-UPDATE SYSTEM
+=============================================================================
+The system checks the GitHub repository on every boot.
 
-For critical system failures, hardware issues, or feature requests, please
-contact the IT Department:
+    If an update is detected: Click "UPDATE NOW."
 
-Lead Developer: Michaeltoich11@gaiil.com (072-626-6202)
-GitHub Repo: https://github.com/MRK1NG11/ESM-POS-VERSIONS
+    The system handles the download, replaces the old executable, and restarts
+    the POS automatically. No IT knowledge required.
+
+=============================================================================
+7. LEGAL & SUPPORT
+=============================================================================
+COPYRIGHT: (c) 2026 Eat Sum Meat (Pty) Ltd.
+SUPPORT:
+For hardware setup, Google Drive linking, or feature requests:
+IT Department: Michaeltoich11@gaiil.com | 072-626-6202
+Repository: https://github.com/MRK1NG11/ESM-POS-VERSIONS
