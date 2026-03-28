@@ -1,131 +1,165 @@
 =============================================================================
-                     EAT SUM MEAT POS - SYSTEM READ ME
+EAT SUM MEAT POS - SYSTEM READ ME
 =============================================================================
-CURRENT VERSION: 0.5.1
-LAST UPDATED: 27 March 2026
+CURRENT VERSION: 0.6.0
+LAST UPDATED: 28 March 2026
 DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
-
 INTRODUCTION
-------------
-Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a 
-custom-built, high-speed, touchscreen-optimized cash register application. 
-It is designed to process sales quickly, manage live inventory, track staff 
-shifts, and provide secure managerial oversight without relying on a constant 
-internet connection for core functions.
 
+Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a
+custom-built, high-speed, touchscreen-optimized retail management suite.
+Upgraded to the enterprise-grade DARK-PRO architecture, it is designed to
+process high-volume sales quickly, prevent unauthorized access via Kiosk mode,
+and provide secure, comprehensive managerial oversight without relying on a
+constant internet connection.
 
 =============================================================================
-1. HOW TO RUN THE SYSTEM
+HOW TO RUN THE SYSTEM
 =============================================================================
-For Windows Terminals (Executable):
-1. Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
-2. Double-click to launch. The system will automatically check for updates 
-   and boot into the login screen.
+    For Windows Terminals (Executable):
+
+    Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
+
+    Double-click to launch. The system will automatically check for updates
+    and boot directly into Fullscreen Kiosk Mode.
 
 For Source Code (Python Developers):
-1. Ensure Python 3.8+ is installed.
-2. Install the required module by running: pip install requests
-3. Run the script: python EatSumMeatPOS.py
+
+    Ensure Python 3.8+ is installed.
+
+    Install the required module by running: pip install requests
+
+    Run the script: python EatSumMeatPOS.py
 
 DEFAULT LOGIN CREDENTIALS:
-- Cashiers: CSH1, CSH2
-- Manager/Admin: ADMIN
-- Admin Override PIN: 1981 (Required for Voids, Markdowns, and Admin Panel)
 
+    Cashiers: CSH1, CSH2
+
+    Manager/Admin: ADMIN
+
+    Admin Override PIN: 1981 (Required for Markdowns, Pay Outs, and Admin Suite)
 
 =============================================================================
 2. INSTRUCTIONS FOR CORE FEATURES
 =============================================================================
-* PROCESSING A SALE:
-  - Scan an item's barcode, or use the "🔍 MANUAL SELECT" button to browse 
-    the visual catalog.
-  - To increase quantity, simply scan/tap the item multiple times.
+    PROCESSING A SALE:
 
-* MANUAL SELECT (MS):
-  - Tap the "🔍 MANUAL SELECT" button below the barcode box.
-  - A categorized grid will appear. You can filter by category (MEAT, SNACKS, 
-    etc.) or use the search bars to type a name or barcode.
+        Scan an item's barcode. The system will instantly clear the box for the
+        next scan and display the item's name, stock, and price on the new
+        "Verify Strip" below the scanner.
 
-* PAYING OUT (CASH / CARD):
-  - Use the quick-cash buttons (+R10, +R50, etc.) to tally the cash handed 
-    by the customer.
-  - Tap "PAY CASH" to finalize the transaction and calculate exact change.
-  - If the customer is using a card machine, tap "CARD SALES".
+        To increase quantity, simply scan the item multiple times.
 
-* 2ND FUNCTIONS:
-  - Tap "⚙️ 2ND FUNCTIONS" at the bottom left.
-  - "⬇️ MARKDOWN PRICE": Allows a manager to temporarily change the price of 
-    a selected item in the cart (requires Admin PIN).
-  - "⌨️ OPEN NUMPAD": Opens a virtual number pad to manually type in 
-    barcodes or amounts if the physical keyboard/scanner fails.
+    MANUAL SELECT (MS):
 
-* ADMIN PANEL:
-  - Accessible from the bottom right (Requires Admin PIN).
-  - DASHBOARD: View today's gross revenue, cash vs. card splits, and a live 
-    feed of today's receipts.
-  - INVENTORY: View live stock. Select an item and click "+ ADD STOCK" to 
-    receive new inventory.
-  - STAFF LOGS: Track cashier login/logout times and total hours worked.
-  - PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and 
-    packages the data for back-office synchronization.
+        Tap the "MANUAL SELECT" button on the left grid.
+
+        A categorized grid will appear. You can filter by category (MEAT, SNACKS,
+        etc.) or use the search bars to type a name or barcode.
+
+    PAYING OUT (CASH / CARD):
+
+        Use the 8 quick-cash buttons (+R200 down to +R1) beneath the numpad to
+        rapidly tally the exact cash handed over by the customer.
+
+        The Total screen will glow RED if cash is DUE, and NEON GREEN for CHANGE.
+
+        Tap "PAY CASH" to finalize the transaction and open the till.
+
+        If the customer is using a card machine, tap "PAY CARD".
+
+    MARKDOWNS & 2ND FUNCTIONS:
+
+        Select an item in the cart and tap "MARK DOWN" to apply a custom price
+        or percentage discount (Requires Admin PIN).
+
+        Tap "2ND FUNC" to access Till Pay Outs. This allows managers to securely
+        log cash removed from the till for store expenses (Requires Admin PIN).
+
+    ADMIN SUITE (Requires Admin PIN):
+
+        Accessible from the bottom left "⚙️ ADMIN VIP" button.
+
+        DASHBOARD: View gross revenue splits and an expandable transaction ledger
+        (click the arrow next to an order to see exactly what was bought).
+
+        INVENTORY: View a live, scrollable data grid of all stock levels.
+
+        STAFF LOGS: Track exact cashier login and logout times.
+
+        PAY OUTS: View a secure audit trail of all cash removed from the till.
+
+        HTML EXPORT: Generates a beautiful, professional daily executive report
+        that opens instantly in your web browser.
+
+        PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and
+        packages the data for back-office synchronization.
 
 =============================================================================
-3. VERSION NOTES (The 0.5.1 "Professional Polish" Update)
-=============================================================================
-This update brings massive quality-of-life improvements, professional-grade 
-reporting, and strict legal compliance to the receipt generator.
+3. VERSION NOTES (The 0.6.0 "DARK" Update)
 
-MAJOR CHANGES IN THIS RELEASE (v0.5.1):
-- Professional Daily Reports: The "EXPORT CSV" button in the Admin Panel 
-  now generates a highly formatted, professional spreadsheet. It includes a 
-  daily summary, itemized transaction logs, and detailed cashier shift logs.
-- Admin Fast-Pass: If you are already logged into the till as "ADMIN", 
-  clicking the Admin Panel button instantly bypasses the PIN screen.
-- Receipt Spillover Fix: Receipt mathematics have been hard-locked. Long 
-  product names truncate cleanly to ensure prices and quantities align 
-  perfectly without wrapping or spilling off the 32-character paper roll.
-- Explicit Receipt Payment Types: Slips now boldly declare "PAID VIA: 
-  CASH SALE" or "PAID VIA: CARD SALE".
-- Legal Protection: Added a legal disclaimer to the bottom of all receipts 
-  (return policy, E&OE, store policy) to protect the business from liability.
-- Scrollbar Annihilated: The default Windows scrollbar on the Cart has 
-  been removed for a much cleaner, flat UI. Cashiers can scroll via touch 
-  drag or mouse wheel.
-- Unified UI Anchoring: The Virtual Numpad now spawns in the bottom-left 
-  corner, perfectly matching the 2nd Functions menu for consistent muscle 
-  memory.
+This update transforms the POS into a true enterprise retail terminal, locking
+down security while massively upgrading the visual interface.
 
+MAJOR CHANGES IN THIS RELEASE (v0.6.0):
+
+    Absolute Fullscreen (Kiosk Mode): The Windows top bar has been eliminated.
+    The system now traps the user inside the POS to prevent desktop access.
+    (Must exit via the Admin Suite).
+
+    Premium Dark Mode UI: The entire system has been moved to a high-contrast
+    charcoal and red theme to reduce eye strain during long cashier shifts.
+
+    Hierarchical Data Grids: The Admin Dashboard no longer crams data. Click the
+    dropdown arrow next to any transaction to smoothly expand and view the
+    itemized receipt.
+
+    Granular Cash Grid: The quick-cash section has been upgraded to a 2x4 grid,
+    allowing exact tender entries from R200 down to R1.
+
+    Smart Verify Strip: A sleek landscape strip below the scanner instantly shows
+    cashiers what they just scanned without breaking eye contact with the flow.
+
+    Massive Number Support: The Change/Due display area has been expanded
+    to handle massive wholesale transaction amounts without text clipping.
+
+    Unified Admin Suite: Transformed the basic admin panel into a 4-tab suite
+    featuring alternating zebra-striped rows, modern spacing, and native mouse
+    scrolling (all ugly grey scrollbars have been annihilated).
+
+    Professional HTML Reports: Replaced the old CSV export with a beautifully
+    styled, color-coded HTML executive report.
 
 =============================================================================
 4. THE AUTO-UPDATE SYSTEM
-=============================================================================
+
 This POS system features a built-in, zero-touch Auto-Updater linked to GitHub.
 
 How it works:
-1. Upon booting, the POS checks the cloud for a new version number.
-2. If a newer version exists, a prompt appears asking to "UPDATE NOW" or "LATER".
-3. Clicking "UPDATE NOW" downloads the latest EatSumMeatPOS.exe from the server.
-4. The system utilizes a temporary batch script (.bat) to safely delete the old 
-   executable, replace it with the new one, and instantly restart the POS.
 
-There is no need for manual USB updates or IT intervention. As long as the till 
+    Upon booting, the POS checks the cloud for a new version number.
+
+    If a newer version exists, a prompt appears asking to "UPDATE NOW" or "LATER".
+
+    Clicking "UPDATE NOW" downloads the latest EatSumMeatPOS.exe from the server.
+
+    The system utilizes a temporary batch script (.bat) to safely delete the old
+    executable, replace it with the new one, and instantly restart the POS.
+
+There is no need for manual USB updates or IT intervention. As long as the till
 has an internet connection on boot, it will remain up to date.
-
-
 =============================================================================
 5. LEGAL INFORMATION
-=============================================================================
+
 Copyright (c) 2026 Eat Sum Meat (Pty) Ltd. All Rights Reserved.
 
-This software is the proprietary property of Eat Sum Meat (Pty) Ltd. 
-Unauthorized copying, modification, distribution, or reverse engineering 
-of this software, via any medium, is strictly prohibited. 
-
-
+This software is the proprietary property of Eat Sum Meat (Pty) Ltd.
+Unauthorized copying, modification, distribution, or reverse engineering
+of this software, via any medium, is strictly prohibited.
 =============================================================================
 6. SUPPORT & CONTACT
-=============================================================================
-For critical system failures, hardware issues, or feature requests, please 
+
+For critical system failures, hardware issues, or feature requests, please
 contact the IT Department:
 
 Lead Developer: Michaeltoich11@gaiil.com (072-626-6202)
