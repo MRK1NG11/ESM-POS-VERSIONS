@@ -1,9 +1,10 @@
 =============================================================================
 EAT SUM MEAT POS - SYSTEM READ ME
 =============================================================================
-CURRENT VERSION: 0.6.0
-LAST UPDATED: 28 March 2026
+CURRENT VERSION: 0.6.1
+LAST UPDATED: 15 April 2026
 DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
+
 INTRODUCTION
 
 Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a
@@ -14,7 +15,7 @@ and provide secure, comprehensive managerial oversight without relying on a
 constant internet connection.
 
 =============================================================================
-HOW TO RUN THE SYSTEM
+1. HOW TO RUN THE SYSTEM
 =============================================================================
     For Windows Terminals (Executable):
 
@@ -22,14 +23,6 @@ HOW TO RUN THE SYSTEM
 
     Double-click to launch. The system will automatically check for updates
     and boot directly into Fullscreen Kiosk Mode.
-
-For Source Code (Python Developers):
-
-    Ensure Python 3.8+ is installed.
-
-    Install the required module by running: pip install requests
-
-    Run the script: python EatSumMeatPOS.py
 
 DEFAULT LOGIN CREDENTIALS:
 
@@ -48,7 +41,9 @@ DEFAULT LOGIN CREDENTIALS:
         next scan and display the item's name, stock, and price on the new
         "Verify Strip" below the scanner.
 
-        To increase quantity, simply scan the item multiple times.
+        To increase quantity, simply scan the item multiple times. 
+        If the cart gets too long, use the new scrollbar on the right side of
+        the receipt window to scroll through items.
 
     MANUAL SELECT (MS):
 
@@ -78,7 +73,7 @@ DEFAULT LOGIN CREDENTIALS:
 
     ADMIN SUITE (Requires Admin PIN):
 
-        Accessible from the bottom left "⚙️ ADMIN VIP" button.
+        Accessible from the bottom left "@ADMIN@" button.
 
         DASHBOARD: View gross revenue splits and an expandable transaction ledger
         (click the arrow next to an order to see exactly what was bought).
@@ -96,61 +91,69 @@ DEFAULT LOGIN CREDENTIALS:
         packages the data for back-office synchronization.
 
 =============================================================================
-3. VERSION NOTES (The 0.6.0 "DARK" Update)
+3. VERSION NOTES (The 0.6.1 "SECURITY & PERFORMANCE" Update)
+=============================================================================
+This update hardens the POS for active store deployment, dramatically reducing
+hardware strain while introducing crucial security and backup measures.
 
-This update transforms the POS into a true enterprise retail terminal, locking
-down security while massively upgrading the visual interface.
+MAJOR CHANGES IN THIS RELEASE (v0.6.1):
 
-MAJOR CHANGES IN THIS RELEASE (v0.6.0):
+    Salted Password Hashing: The Admin PIN is no longer checked in plain text.
+    It utilizes a salted SHA-256 cryptographic hash, making it incredibly
+    difficult for malicious software to scrape memory for the manager code.
 
-    Absolute Fullscreen (Kiosk Mode): The Windows top bar has been eliminated.
-    The system now traps the user inside the POS to prevent desktop access.
-    (Must exit via the Admin Suite).
+    Hardware Debloat (In-Memory Caching): Eliminated the heavy disk I/O bottleneck.
+    The POS now loads all JSON data into memory on boot. It reads instantly
+    from RAM and only writes to the hard drive when a sale occurs, massively
+    speeding up the system on older, low-end hardware.
 
-    Premium Dark Mode UI: The entire system has been moved to a high-contrast
-    charcoal and red theme to reduce eye strain during long cashier shifts.
+    Automated Local Backups: Hard drives fail. The app now features an automated
+    fail-safe that creates a secure 'backups/' folder and saves a timestamped
+    copy of your inventory and sales data every single time the system boots up.
 
-    Hierarchical Data Grids: The Admin Dashboard no longer crams data. Click the
-    dropdown arrow next to any transaction to smoothly expand and view the
-    itemized receipt.
+    Auto-Logout (Security Lock): If a cashier walks away from the till, the
+    system will automatically detect inactivity and lock the screen after
+    5 minutes, preventing unauthorized sales or voids.
 
-    Granular Cash Grid: The quick-cash section has been upgraded to a 2x4 grid,
-    allowing exact tender entries from R200 down to R1.
+    Visual Cart Scrollbar: Added a native, dark-themed vertical scrollbar to
+    the main cart grid, allowing cashiers to easily navigate massive orders
+    that extend off the screen.
 
-    Smart Verify Strip: A sleek landscape strip below the scanner instantly shows
-    cashiers what they just scanned without breaking eye contact with the flow.
+    Strict Floating-Point Math: Applied strict dual-rounding logic to all currency
+    calculations. This entirely prevents standard Python fractional errors
+    (e.g., 0.300000000004), ensuring the till never falls out of balance by a cent.
 
-    Massive Number Support: The Change/Due display area has been expanded
-    to handle massive wholesale transaction amounts without text clipping.
+    Windows High-DPI Compatibility: Implemented 'SetProcessDpiAwareness' for
+    Windows 10 & 11 terminals, forcing the OS to render the POS in crisp,
+    high definition instead of looking blurry on modern screens.
 
-    Unified Admin Suite: Transformed the basic admin panel into a 4-tab suite
-    featuring alternating zebra-striped rows, modern spacing, and native mouse
-    scrolling (all ugly grey scrollbars have been annihilated).
-
-    Professional HTML Reports: Replaced the old CSV export with a beautifully
-    styled, color-coded HTML executive report.
+    Button Rebranding: Admin suite button has been renamed to "@ADMIN@".
 
 =============================================================================
 4. THE AUTO-UPDATE SYSTEM
-
+=============================================================================
 This POS system features a built-in, zero-touch Auto-Updater linked to GitHub.
+The UI and behavior have been completely revamped in this version.
 
 How it works:
 
     Upon booting, the POS checks the cloud for a new version number.
 
-    If a newer version exists, a prompt appears asking to "UPDATE NOW" or "LATER".
+    If a newer version exists, a sleek prompt appears asking to "UPDATE NOW" or "LATER".
 
-    Clicking "UPDATE NOW" downloads the latest EatSumMeatPOS.exe from the server.
+    Clicking "UPDATE NOW" brings up a premium progress screen with a stylized
+    progress bar and a live percentage counter (e.g., "45%").
 
-    The system utilizes a temporary batch script (.bat) to safely delete the old
-    executable, replace it with the new one, and instantly restart the POS.
+    To protect data integrity, the system no longer auto-restarts. Once the
+    download completes, a success message tells the user the update is ready.
+    When they click OK, the app closes itself safely, swaps the files in the
+    background via a batch script, and waits for the user to reopen it manually.
 
 There is no need for manual USB updates or IT intervention. As long as the till
 has an internet connection on boot, it will remain up to date.
 =============================================================================
 5. LEGAL INFORMATION
-
+=============================================================================
 Copyright (c) 2026 Eat Sum Meat (Pty) Ltd. All Rights Reserved.
 
 This software is the proprietary property of Eat Sum Meat (Pty) Ltd.
@@ -158,7 +161,7 @@ Unauthorized copying, modification, distribution, or reverse engineering
 of this software, via any medium, is strictly prohibited.
 =============================================================================
 6. SUPPORT & CONTACT
-
+=============================================================================
 For critical system failures, hardware issues, or feature requests, please
 contact the IT Department:
 
