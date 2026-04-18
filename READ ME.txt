@@ -1,167 +1,166 @@
 =============================================================================
 EAT SUM MEAT POS - SYSTEM READ ME
-=============================================================================
-CURRENT VERSION: 0.6.1
-LAST UPDATED: 15 April 2026
+CURRENT VERSION: 0.7.1
+LAST UPDATED: 17 April 2026
 DEVELOPED FOR: Eat Sum Meat (Pty) Ltd
-
 INTRODUCTION
-
 Welcome to the Eat Sum Meat Point of Sale (POS) system. This software is a
 custom-built, high-speed, touchscreen-optimized retail management suite.
 Upgraded to the enterprise-grade DARK-PRO architecture, it is designed to
 process high-volume sales quickly, prevent unauthorized access via Kiosk mode,
-and provide secure, comprehensive managerial oversight without relying on a
-constant internet connection.
+and provide secure, comprehensive managerial oversight across a multi-till
+networked environment.
 
 =============================================================================
-1. HOW TO RUN THE SYSTEM
-=============================================================================
-    For Windows Terminals (Executable):
+HOW TO RUN THE SYSTEM
+For Windows Terminals (Executable):
 
-    Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
+Locate the "EatSumMeatPOS.exe" file on the desktop or target folder.
 
-    Double-click to launch. The system will automatically check for updates
-    and boot directly into Fullscreen Kiosk Mode.
+Double-click to launch. The system will automatically check for updates
+and boot directly into Fullscreen Kiosk Mode.
 
 DEFAULT LOGIN CREDENTIALS:
 
-    Cashiers: CSH1, CSH2
+Cashiers: CSH1, CSH2
 
-    Manager/Admin: ADMIN
+Manager/Admin: ADMIN
 
-    Admin Override PIN: 1981 (Required for Markdowns, Pay Outs, and Admin Suite)
+Admin Override PIN: 1981 (Required for Markdowns, Pay Outs, and Admin Suite)
 
 =============================================================================
 2. INSTRUCTIONS FOR CORE FEATURES
+PROCESSING A SALE:
+
+Scan an item's barcode. The system will instantly clear the box for the
+next scan and display the item's name, stock, and price on the new
+"Verify Strip" below the scanner.
+
+To increase quantity, simply scan the item multiple times. 
+If the cart gets too long, use the new scrollbar on the right side of
+the receipt window to scroll through items.
+MANUAL SELECT (MS):
+
+Tap the "MANUAL SELECT" button on the left grid.
+
+A categorized grid will appear. You can filter by category (MEAT, SNACKS,
+etc.) or use the search bars to type a name or barcode.
+PAYING OUT (CASH / CARD):
+
+Use the 8 quick-cash buttons (+R200 down to +R1) beneath the numpad to
+rapidly tally the exact cash handed over by the customer.
+
+The Total screen will glow RED if cash is DUE, and NEON GREEN for CHANGE.
+
+Tap "PAY CASH" to finalize the transaction and open the till.
+
+If the customer is using a card machine, tap "PAY CARD".
+MARKDOWNS & 2ND FUNCTIONS:
+
+Select an item in the cart and tap "MARK DOWN" to apply a custom price
+or percentage discount (Requires Admin PIN).
+
+Tap "2ND FUNC" to access Till Pay Outs. This allows managers to securely
+log cash removed from the till for store expenses (Requires Admin PIN).
+ADMIN SUITE (Requires Admin PIN):
+
+Accessible from the "⚙ ADMIN PANEL" button located directly beneath the
+TOTAL display (Note: This button is only visible when logged in as ADMIN).
+
+DASHBOARD: View gross revenue splits and an expandable transaction ledger
+(click the arrow next to an order to see exactly what was bought).
+
+INVENTORY: View a live, scrollable data grid of all stock levels.
+
+STAFF LOGS: Track exact cashier login and logout times.
+
+PAY OUTS: View a secure audit trail of all cash removed from the till.
+
+NETWORK: Configure Back-Office Server IP, Till Number, test live 
+connections, and toggle Offline Mode directly from the terminal.
+
+HTML EXPORT: Generates a beautiful, professional daily executive report
+that opens instantly in your web browser.
+
+PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and
+packages the data for back-office synchronization.
 =============================================================================
-    PROCESSING A SALE:
+3. VERSION NOTES (The 0.7.1
+This update transforms the POS into a fully scalable enterprise system,
+introducing seamless local networking, bulletproof offline redundancies, and
+a massive overhaul to background processing and application security.
 
-        Scan an item's barcode. The system will instantly clear the box for the
-        next scan and display the item's name, stock, and price on the new
-        "Verify Strip" below the scanner.
+MAJOR CHANGES IN THIS RELEASE (v0.7.1):
 
-        To increase quantity, simply scan the item multiple times. 
-        If the cart gets too long, use the new scrollbar on the right side of
-        the receipt window to scroll through items.
+Multi-Till Back-Office Networking (LAN Sync): The POS now supports a fully
+integrated local area network environment. Multiple terminal tills can now
+operate simultaneously, synchronizing inventory and sales data in real-time
+with the back-office master server.
 
-    MANUAL SELECT (MS):
+Background I/O Processing: All disk writing and network syncing operations
+have been offloaded to background threads. This ensures the touchscreen
+UI remains lightning-fast and never freezes during heavy data operations.
 
-        Tap the "MANUAL SELECT" button on the left grid.
+Local Offline Queue: Tills are no longer crippled by network drops. If the
+back-office connection is lost, the POS seamlessly transitions to an offline
+queue, continuing to process sales rapidly. Data automatically syncs the
+moment the server returns.
 
-        A categorized grid will appear. You can filter by category (MEAT, SNACKS,
-        etc.) or use the search bars to type a name or barcode.
+PIN Lockout (Anti-Brute Force): Added aggressive protection against
+unauthorized access. Entering an incorrect Admin PIN 3 consecutive times
+will now trigger a mandatory, system-wide 60-second lockout cooldown.
 
-    PAYING OUT (CASH / CARD):
+File-Integrity Checksums (Tamper Detection): The software now continuously
+verifies its own core files using cryptographic checksums. Any unauthorized
+modification or corruption of system files will be instantly detected.
 
-        Use the 8 quick-cash buttons (+R200 down to +R1) beneath the numpad to
-        rapidly tally the exact cash handed over by the customer.
+Input Sanitisation & Injection Prevention: All data inputs, whether from
+a barcode scanner or manual keyboard entry, are strictly sanitized to
+prevent malicious code injection or database manipulation attacks.
 
-        The Total screen will glow RED if cash is DUE, and NEON GREEN for CHANGE.
+Encrypted Config Files: Back-office server credentials and sensitive network
+parameters are now protected by strong local encryption rather than being
+stored in plain-text configuration files.
 
-        Tap "PAY CASH" to finalize the transaction and open the till.
+Memory-Safe PIN Clearing: Once an Admin PIN is processed, it is aggressively
+and immediately wiped from active RAM, preventing sophisticated memory
+scraping malware from extracting managerial access codes.
 
-        If the customer is using a card machine, tap "PAY CARD".
-
-    MARKDOWNS & 2ND FUNCTIONS:
-
-        Select an item in the cart and tap "MARK DOWN" to apply a custom price
-        or percentage discount (Requires Admin PIN).
-
-        Tap "2ND FUNC" to access Till Pay Outs. This allows managers to securely
-        log cash removed from the till for store expenses (Requires Admin PIN).
-
-    ADMIN SUITE (Requires Admin PIN):
-
-        Accessible from the bottom left "@ADMIN@" button.
-
-        DASHBOARD: View gross revenue splits and an expandable transaction ledger
-        (click the arrow next to an order to see exactly what was bought).
-
-        INVENTORY: View a live, scrollable data grid of all stock levels.
-
-        STAFF LOGS: Track exact cashier login and logout times.
-
-        PAY OUTS: View a secure audit trail of all cash removed from the till.
-
-        HTML EXPORT: Generates a beautiful, professional daily executive report
-        that opens instantly in your web browser.
-
-        PRINT Z-REPORT: Runs the End-of-Day report, prints the total slip, and
-        packages the data for back-office synchronization.
-
-=============================================================================
-3. VERSION NOTES (The 0.6.1 "SECURITY & PERFORMANCE" Update)
-=============================================================================
-This update hardens the POS for active store deployment, dramatically reducing
-hardware strain while introducing crucial security and backup measures.
-
-MAJOR CHANGES IN THIS RELEASE (v0.6.1):
-
-    Salted Password Hashing: The Admin PIN is no longer checked in plain text.
-    It utilizes a salted SHA-256 cryptographic hash, making it incredibly
-    difficult for malicious software to scrape memory for the manager code.
-
-    Hardware Debloat (In-Memory Caching): Eliminated the heavy disk I/O bottleneck.
-    The POS now loads all JSON data into memory on boot. It reads instantly
-    from RAM and only writes to the hard drive when a sale occurs, massively
-    speeding up the system on older, low-end hardware.
-
-    Automated Local Backups: Hard drives fail. The app now features an automated
-    fail-safe that creates a secure 'backups/' folder and saves a timestamped
-    copy of your inventory and sales data every single time the system boots up.
-
-    Auto-Logout (Security Lock): If a cashier walks away from the till, the
-    system will automatically detect inactivity and lock the screen after
-    5 minutes, preventing unauthorized sales or voids.
-
-    Visual Cart Scrollbar: Added a native, dark-themed vertical scrollbar to
-    the main cart grid, allowing cashiers to easily navigate massive orders
-    that extend off the screen.
-
-    Strict Floating-Point Math: Applied strict dual-rounding logic to all currency
-    calculations. This entirely prevents standard Python fractional errors
-    (e.g., 0.300000000004), ensuring the till never falls out of balance by a cent.
-
-    Windows High-DPI Compatibility: Implemented 'SetProcessDpiAwareness' for
-    Windows 10 & 11 terminals, forcing the OS to render the POS in crisp,
-    high definition instead of looking blurry on modern screens.
-
-    Button Rebranding: Admin suite button has been renamed to "@ADMIN@".
+Structured Security-Audit Log: A new, robust background logging system
+has been implemented. It maintains a detailed, structured audit trail of
+all security events, network drops, failures, and access attempts.
 
 =============================================================================
 4. THE AUTO-UPDATE SYSTEM
-=============================================================================
 This POS system features a built-in, zero-touch Auto-Updater linked to GitHub.
 The UI and behavior have been completely revamped in this version.
 
 How it works:
 
-    Upon booting, the POS checks the cloud for a new version number.
+Upon booting, the POS checks the cloud for a new version number.
 
-    If a newer version exists, a sleek prompt appears asking to "UPDATE NOW" or "LATER".
+If a newer version exists, a sleek prompt appears asking to "UPDATE NOW" or "LATER".
 
-    Clicking "UPDATE NOW" brings up a premium progress screen with a stylized
-    progress bar and a live percentage counter (e.g., "45%").
+Clicking "UPDATE NOW" brings up a premium progress screen with a stylized
+progress bar and a live percentage counter (e.g., "45%").
 
-    To protect data integrity, the system no longer auto-restarts. Once the
-    download completes, a success message tells the user the update is ready.
-    When they click OK, the app closes itself safely, swaps the files in the
-    background via a batch script, and waits for the user to reopen it manually.
-
+To protect data integrity, the system no longer auto-restarts. Once the
+download completes, a success message tells the user the update is ready.
+When they click OK, the app closes itself safely, swaps the files in the
+background via a batch script, and waits for the user to reopen it manually.
 There is no need for manual USB updates or IT intervention. As long as the till
 has an internet connection on boot, it will remain up to date.
+
 =============================================================================
-5. LEGAL INFORMATION
-=============================================================================
+LEGAL INFORMATION
 Copyright (c) 2026 Eat Sum Meat (Pty) Ltd. All Rights Reserved.
 
 This software is the proprietary property of Eat Sum Meat (Pty) Ltd.
 Unauthorized copying, modification, distribution, or reverse engineering
 of this software, via any medium, is strictly prohibited.
+
 =============================================================================
-6. SUPPORT & CONTACT
-=============================================================================
+SUPPORT & CONTACT
 For critical system failures, hardware issues, or feature requests, please
 contact the IT Department:
 
